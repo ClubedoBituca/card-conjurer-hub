@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -56,7 +55,13 @@ const Index = () => {
         ? { ...filters, name: quickSearch }
         : filters;
       
-      const result = await scryfallApi.searchCards(searchFilters, page);
+      // Clean up filters - replace "any" with empty string for type
+      const cleanFilters = {
+        ...searchFilters,
+        type: searchFilters.type === 'any' ? '' : searchFilters.type,
+      };
+      
+      const result = await scryfallApi.searchCards(cleanFilters, page);
       
       if (resetResults) {
         setCards(result.data);

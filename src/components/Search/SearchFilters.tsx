@@ -118,7 +118,7 @@ export default function SearchFilters({ filters, onFiltersChange, onSearch, isLo
             <SelectValue placeholder="Select type..." />
           </SelectTrigger>
           <SelectContent className="bg-popover">
-            <SelectItem value="">Any Type</SelectItem>
+            <SelectItem value="any">Any Type</SelectItem>
             {TYPES.map((type) => (
               <SelectItem key={type} value={type.toLowerCase()}>
                 {type}
